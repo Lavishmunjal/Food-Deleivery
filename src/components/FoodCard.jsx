@@ -3,7 +3,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/slice/CartSlice'
 
-const FoodCard = ({id, name, price, desc, rating, img}) => {
+const FoodCard = ({id, name, price, desc, rating, img, handleToast}) => {
   const dispatch = useDispatch()
   return (
     <div className='font-bold w-[250px] bg-white p-5 flex flex-col gap-2 rounded-lg'>
@@ -19,6 +19,7 @@ const FoodCard = ({id, name, price, desc, rating, img}) => {
             </span>
             <button onClick={()=>{
               dispatch(addToCart({id, name, price,rating, qty:1, img}))
+              handleToast(name)
             }} className='p-1 text-white bg-green-500 rounded-lg hover:bg-green-600 text-sm'>Add to Cart</button>
         </div>
     </div>
